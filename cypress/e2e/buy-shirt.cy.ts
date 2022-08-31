@@ -1,28 +1,39 @@
+import {MenuContentPage} from "../page/index";
+import {ProductsListPage} from "../page/products-list.page";
+import {ShoppingCartPage} from "../page/shopping-cart.page";
+import {LoginPage} from "../page/login.page";
+import {AddressStepPage} from "../page/address-step.page";
+import {ShippingStepPage} from "../page/shipping-step.page";
+import {PaymentStepPage} from "../page/payment-step.page";
+
+const menuContentPage = new MenuContentPage();
+const productsListPage = new ProductsListPage();
+const shoppingCartPage = new ShoppingCartPage();
+const loginPage = new LoginPage();
+const addressStepPage = new AddressStepPage();
+const shippingStepPage = new ShippingStepPage();
+const paymentStepPage = new PaymentStepPage();
+
 describe("Buy a t-shirt", () => {
   it("then the t-shirt should be bought", () => {
-    cy.visit("http://automationpractice.com/");
-    cy.get("#block_top_menu > ul > li:nth-child(3) > a").click();
-    cy.get(
-        "#center_column a.button.ajax_add_to_cart_button.btn.btn-default",
-    ).click();
-    cy.get("[style*='display: block;'] .button-container > a").click();
-    cy.get(".cart_navigation span").click();
+    menuContentPage.visitMenuContentPage();
+    menuContentPage.goToTShirtMenu();
 
-    cy.get("#email").type("aperdomobo@gmail.com");
-    cy.get("#passwd").type("WorkshopProtractor");
-    cy.get("#SubmitLogin").click();
+    productsListPage.addToCart();
+    productsListPage.proceedToCheckOut();
 
-    cy.get(".cart_navigation span").click();
+    shoppingCartPage.proceedToCheckOut();
 
-    cy.get("#cgv").click();
-    cy.get(".cart_navigation span").click();
+    loginPage.signIn("aperdomobo@gmail.com", "WorkshopProtractor");
 
-    cy.get(".bankwire ").click();
-    cy.get(".cart_navigation span").click();
+    addressStepPage.proceedToCheckout();
 
-    cy.get("#center_column > div > p > strong").should(
-        "have.text",
-        "Your order on My Store is complete.",
-    );
+    shippingStepPage.agreeTerms();
+    shippingStepPage.proceedToCheckOut();
+
+    paymentStepPage.payByBankWire();
+    paymentStepPage.confirmOrder();
+    paymentStepPage.verifyText().should("have.text",
+        "Your order on My Store is complete.");
   });
 });

@@ -8,7 +8,7 @@ export default defineConfig({
     screenshotOnRunFailure: false,
     setupNodeEvents(on, config) {
       config.defaultCommandTimeout = 20000
-      config.responseTimeout = 20000
+      config.responseTimeout = 50000
       // modify config values examples
       // config.defaultCommandTimeout = 10000
 
