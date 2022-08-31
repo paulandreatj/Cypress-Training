@@ -13,9 +13,9 @@ class LoginPage{
         this.submitButton = "#SubmitLogin";
     }
 
-    public signIn(): void {
-        cy.get(this.email).type(this.examplemail);
-        cy.get(this.passwd).type(this.examplepasswd);
+    public signIn(e:string, p:string): void {
+        cy.get(this.email).type(e);
+        cy.get(this.passwd).type(p);
         cy.get(this.submitButton).click();
     }
 }

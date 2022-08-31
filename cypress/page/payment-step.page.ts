@@ -1,7 +1,7 @@
 class PaymentStepPage{
     private buton: string;
     private summary: string;
-    private text: string;
+    public text: string;
 
     constructor(){
         this.buton = ".bankwire";
@@ -15,11 +15,6 @@ class PaymentStepPage{
 
     public confirmOrder(): void {
         cy.get(this.summary).click();
-    }
-
-    public verifyText(): void {
-        cy.get(this.text).should("have.text",
-        "Your order on My Store is complete.");
     }
 }
 

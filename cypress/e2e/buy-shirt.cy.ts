@@ -22,17 +22,18 @@ describe("Buy a t-shirt", () => {
     productsListPage.addToCart();
     productsListPage.proceedToCheckOut();
 
-    shoppingCartPage.proceedToCheckout();
+    shoppingCartPage.proceedToCheckOut();
 
-    loginPage.signIn();
+    loginPage.signIn("aperdomobo@gmail.com", "WorkshopProtractor");
 
     addressStepPage.proceedToCheckout();
 
     shippingStepPage.agreeTerms();
-    shippingStepPage.proceedToCheckout();
+    shippingStepPage.proceedToCheckOut();
 
     paymentStepPage.payByBankWire();
     paymentStepPage.confirmOrder();
-    paymentStepPage.verifyText();
+    cy.get(paymentStepPage.text).should("have.text",
+        "Your order on My Store is complete.");
   });
 });
