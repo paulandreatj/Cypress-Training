@@ -33,7 +33,7 @@ describe("Buy a t-shirt", () => {
 
     paymentStepPage.payByBankWire();
     paymentStepPage.confirmOrder();
-    cy.get(paymentStepPage.text).should("have.text",
+    paymentStepPage.verifyText().should("have.text",
         "Your order on My Store is complete.");
   });
 });

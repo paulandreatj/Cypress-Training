@@ -16,6 +16,10 @@ class PaymentStepPage{
     public confirmOrder(): void {
         cy.get(this.summary).click();
     }
+
+    public verifyText(){
+        return cy.get(this.text);
+    }
 }
 
 export { PaymentStepPage }
