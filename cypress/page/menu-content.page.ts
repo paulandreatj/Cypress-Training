@@ -3,7 +3,7 @@ class MenuContentPage {
     private menuContentPageURL: string;
 
     constructor() {
-        this.tShirtMenu = "#block_top_menu > ul > li:nth-child(3) > a";
+        this.tShirtMenu = ".sf-menu > li:nth-child(3)";
         this.menuContentPageURL = "http://automationpractice.com/";
     }
 
