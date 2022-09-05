@@ -4,7 +4,7 @@ class ShippingStepPage{
 
     constructor(){
         this.checkbox = "#cgv";
-        this.summary = ".cart_navigation span";
+        this.summary = ".cart_navigation .button";
     }
 
     public agreeTerms(): void {

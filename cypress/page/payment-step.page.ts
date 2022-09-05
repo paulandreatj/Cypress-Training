@@ -5,8 +5,8 @@ class PaymentStepPage{
 
     constructor(){
         this.buton = ".bankwire";
-        this.summary = ".cart_navigation span";
-        this.text = "#center_column > div > p > strong";
+        this.summary = ".cart_navigation .button";
+        this.text = ".cheque-indent .dark";
     }
 
     public payByBankWire(): void {
